@@ -1,0 +1,18 @@
+version: "3"
+services:
+    app:
+      build: .
+      image: vuejs      
+      ports: 
+        - "8080:8080"
+      depends_on: 
+        - api
+    api:
+      build: ./api
+      image: api
+      command: json-server --watch /data/db.json --port 5000 --host 0.0.0.0
+      ports: 
+        - "5000:5000"
+    
+    
+    
